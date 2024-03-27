@@ -1,0 +1,120 @@
+.App {
+	text-align: center;
+}
+
+/* Typing Terminal styling */
+#correctly-typed-text {
+	background-color: #fffdf5;
+	color: rgb(0, 0, 0);
+}
+
+#incorrectly-typed-text {
+	background-color: #f30000;
+	color: white;
+}
+
+#current-char {
+	background-color: #cfcbbf;
+	color: black;
+	background-image: url('./static/gifs/black-cursor.gif');
+	background-repeat: repeat-y;
+}
+
+@keyframes cursor-blink {
+	0% {
+		border-left: 2px solid #cfcbbf;
+	}
+}
+
+#text-to-type {
+	background-color: #cfcbbf;
+	color: black;
+}
+
+#teminal-input-wrapper {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 0px;
+	height: 0px;
+	overflow: hidden;
+}
+
+#teminal-input {
+	display: block;
+	margin: 0px;
+	padding: 0px;
+	width: 1em;
+	height: 1em;
+	border: none;
+	outline: none;
+}
+
+/* Quote styling */
+#author {
+	float: right;
+	margin-right: 1em;
+	font-size: larger;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono&family=Xanh+Mono:ital@1&display=swap');
+
+html,
+body {
+	height: 100%;
+	margin: 0;
+}
+
+body {
+	background: #fffdf5;
+	color: #3f3f5a;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+blockquote {
+	font-family: 'Mono Space', monospace;
+	font-size: 1.8rem;
+	width: auto;
+	max-width: 800px;
+	line-height: 1.4;
+	position: relative;
+	margin: 0;
+	padding: .5rem;
+	white-space: break-spaces;
+}
+
+blockquote:before,
+blockquote:after {
+	position: absolute;
+	color: #ddd9c3;
+	font-size: 8rem;
+	width: 4rem;
+	height: 4rem;
+}
+
+blockquote:before {
+	content: '“';
+	left: -5rem;
+	top: -2rem;
+}
+
+blockquote:after {
+	content: '”';
+	right: -5rem;
+	bottom: 1rem;
+}
+
+cite {
+	font-family: 'Xanh Mono', monospace;
+	font-weight: 600;
+	line-height: 3;
+	text-align: left;
+}
+
+.blured {
+	filter: blur(3px);
+	-webkit-blur: blur(3px);
+}
