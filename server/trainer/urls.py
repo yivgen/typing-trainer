@@ -2,5 +2,5 @@ from django.urls import path
 from trainer import views
 
 urlpatterns = [
-    path('get-quote/', views.get_quote),
+    path('get-random-quote/', views.get_random_quote),
 ]
