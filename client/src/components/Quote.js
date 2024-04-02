@@ -78,6 +78,7 @@ function Quote({ quote, author, onFinish }) {
                     onChange={inputChangeHandler}
                     id="teminal-input"
                     autoCapitalize="none"
+                    autoComplete="off"
                     autoCorrect="off"
                     spellCheck="false"
                 />

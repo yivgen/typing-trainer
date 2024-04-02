@@ -1,55 +1,26 @@
 import './App.css';
-import { useState, useEffect } from 'react';
-import axios from 'axios';
-import Quote from './components/Quote';
-import Spinner from './components/Spinner';
-import TypingStats from './components/TypingStats';
+import { Routes, Route } from 'react-router-dom';
+import Login from './components/Login';
+import RequireAuth from './components/RequireAuth';
+import TypeAQuote from './components/TypeAQuote';
+import Missing from './components/Missing';
+import Layout from './components/Layout';
 
 function App() {
-  const [quote, setQuote] = useState('');
-  const [author, setAuthor] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
-  const [isQuoteFinished, setIsQuoteFinished] = useState(false);
-  const [typingData, setTypingData] = useState([]);
 
-  const setNewQuote = () => {
-    setIsQuoteFinished(false);
-    setIsLoading(true);
-    axios.get('http://localhost:8080/api/get-quote/')
-      .then(res => {
-        console.log(res)
-        setQuote(res.data?.quote || '');
-        setAuthor(res.data?.author || '');
-      })
-      .catch(error => {
-        console.log(error);
-        setQuote('Oops! Something went wrong. Please try again later');
-        setAuthor('Typing Trainer');
-      })
-      .finally(() => setIsLoading(false));
-  }
+    return (
+        <Routes>
+            <Route path="/" element={<Layout />} >
+                <Route path="login" element={<Login />} />
 
-  
-  const onFinishedQuote = (typingData) => {
-    console.log(typingData);
-    setTypingData(typingData);
-    setIsQuoteFinished(true);
-  }
+                <Route element={<RequireAuth />}>
+                    <Route path="/" element={<TypeAQuote />} />
+                </Route>
 
-  useEffect(() => {
-    setIsQuoteFinished(false);
-    setNewQuote();
-  }, [])
-
-  return (
-    <div className="App">
-      {isLoading
-        ? <Spinner/>
-        : isQuoteFinished
-          ? <TypingStats typingData={typingData} onNextQuote={setNewQuote} />
-          : <Quote quote={quote} author={author} onFinish={onFinishedQuote} />}
-    </div>
-  );
+                <Route path="*" element={<Missing />} />
+            </Route>
+        </Routes>
+    );
 }
 
 export default App;
