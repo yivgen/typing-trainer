@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
 import Quote from './Quote';
 import Spinner from './Spinner';
 import TypingStats from './TypingStats';
 import useAxiosPrivate from '../hooks/useAxiosPrivate';
+import Signout from './Signout';
 
 function TypeAQuote() {
     const axiosPrivate = useAxiosPrivate();
@@ -45,6 +45,7 @@ function TypeAQuote() {
 
     return (
         <div className="type-a-quote">
+            <Signout />
             {isLoading
                 ? <Spinner />
                 : isQuoteFinished

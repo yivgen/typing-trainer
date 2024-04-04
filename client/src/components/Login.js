@@ -42,7 +42,7 @@ const Login = () => {
             //console.log(JSON.stringify(response));
             const accessToken = response?.data?.access;
             const roles = response?.data?.roles;
-            setAuth({ username, password, accessToken });
+            setAuth({ username, accessToken });
             setUsername('');
             setPassword('');
             navigate(from, { replace: true });
@@ -62,7 +62,7 @@ const Login = () => {
 
     return (
 
-        <section>
+        <section className='center-hv'>
             <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
             <h1>Sign In</h1>
             <form onSubmit={handleSubmit}>

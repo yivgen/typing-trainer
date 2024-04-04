@@ -5,6 +5,7 @@ import RequireAuth from './components/RequireAuth';
 import TypeAQuote from './components/TypeAQuote';
 import Missing from './components/Missing';
 import Layout from './components/Layout';
+import PersistLogin from './components/PersistLogin';
 
 function App() {
 
@@ -13,10 +14,12 @@ function App() {
             <Route path="/" element={<Layout />} >
                 <Route path="login" element={<Login />} />
 
-                <Route element={<RequireAuth />}>
-                    <Route path="/" element={<TypeAQuote />} />
+                <Route element={<PersistLogin />}>
+                    <Route element={<RequireAuth />}>
+                        <Route path="/" element={<TypeAQuote />} />
+                    </Route>
                 </Route>
-
+                
                 <Route path="*" element={<Missing />} />
             </Route>
         </Routes>

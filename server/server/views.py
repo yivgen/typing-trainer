@@ -3,6 +3,10 @@ from rest_framework_simplejwt.views import (
     TokenRefreshView,
     TokenObtainPairView
 )
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from rest_framework_simplejwt.tokens import RefreshToken
 
 
 class MyTokenObtainPairView(TokenObtainPairView):
@@ -23,3 +27,11 @@ class MyTokenRefreshView(TokenRefreshView):
         response = super().post(request, *args, **kwargs)
         return response
 
+class LogoutView(APIView):
+    def post(self, request):
+        token = RefreshToken(request.COOKIES.get('refresh_token'))
+        token.blacklist()
+
+        res = Response(status=status.HTTP_205_RESET_CONTENT)
+        res.set_cookie('refresh_token', None)
+        return res
