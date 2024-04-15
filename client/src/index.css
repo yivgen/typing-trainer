@@ -54,7 +54,7 @@ form {
     padding-bottom: 1rem;
 }
 
-a, a:visited {
+a#signup-link, a#signup-link:visited {
     color: #fff;
 }
 
@@ -134,4 +134,23 @@ button {
   width: 50px;
   color: #6c6b78;
   cursor: pointer;
+}
+
+.navbar {
+  z-index: 1999;
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.navbar > a {
+  text-decoration: none;
+  color: #403e52;
+  font-weight: bold;
+}
+
+.navbar > a:hover {
+  cursor: pointer;
+  color: #7f7f82;
 }

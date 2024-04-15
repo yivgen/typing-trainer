@@ -4,6 +4,7 @@ import Spinner from './Spinner';
 import TypingStats from './TypingStats';
 import useAxiosPrivate from '../hooks/useAxiosPrivate';
 import Signout from './Signout';
+import NavBar from './NavBar';
 
 function TypeAQuote() {
     const axiosPrivate = useAxiosPrivate();
@@ -45,6 +46,7 @@ function TypeAQuote() {
 
     return (
         <div className="type-a-quote">
+            <NavBar />
             <Signout />
             {isLoading
                 ? <Spinner />

@@ -6,8 +6,8 @@ function TypingStats({ typingData, onNextQuote }) {
     }
 
     const calculateAccuracy = () => {
-        let correctlyTypedCharsCount = typingData.length - typingData.typos;
-        return ((correctlyTypedCharsCount * 100) / typingData.length).toFixed(2);
+        let correctlyTypedChars = typingData.length - typingData.typos;
+        return ((correctlyTypedChars * 100) / typingData.length).toFixed(2);
     }
 
     return (
