@@ -1,11 +1,14 @@
-import { Link } from "react-router-dom"
+import { NavLink } from "react-router-dom"
+import Signout from "./Signout"
 
-const NavBar = () => {
+const Navbar = () => {
     return (
-        <div className="navbar">
-            <Link to="/profile/">Profile</Link>
-        </div>
+        <nav className="navbar">
+            <NavLink to="/">Practice</NavLink>
+            <NavLink to="/profile/">Profile</NavLink>
+            <Signout />
+        </nav>
     )
 }
 
-export default NavBar
+export default Navbar

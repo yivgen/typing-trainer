@@ -1,5 +1,5 @@
 import './App.css';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Outlet } from 'react-router-dom';
 import Login from './components/Login';
 import RequireAuth from './components/RequireAuth';
 import TypeAQuote from './components/TypeAQuote';
@@ -9,13 +9,12 @@ import PersistLogin from './components/PersistLogin';
 import Profile from './components/Profile';
 
 function App() {
-
     return (
         <Routes>
-            <Route path="/" element={<Layout />} >
-                <Route path="login" element={<Login />} />
+            <Route path="login" element={<Login />} />
 
-                <Route element={<PersistLogin />}>
+            <Route element={<PersistLogin />}>
+                <Route path='/' element={<Layout />}>
                     <Route element={<RequireAuth />}>
                         <Route path="/" element={<TypeAQuote />} />
                     </Route>
@@ -24,9 +23,9 @@ function App() {
                         <Route path="profile" element={<Profile />} />
                     </Route>
                 </Route>
-                
-                <Route path="*" element={<Missing />} />
             </Route>
+
+            <Route path="*" element={<Missing />} />
         </Routes>
     );
 }

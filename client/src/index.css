@@ -26,13 +26,13 @@ html {
     color: #fff;
 }
 
-.App {
+.App,
+.center-hv {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 100vh; 
-  padding: 1rem 0.5rem;
+  min-height: 100vh;
 }
 
 section {
@@ -125,13 +125,11 @@ button {
 }
 
 .signout {
-  z-index: 1999;
-  position: fixed;
-  top: 20px;
-  bottom: auto;
-  left: auto;
-  right: 50px;
-  width: 50px;
+  position: absolute;
+  right: 30px;
+  top: 0;
+  width: 40px;
+  padding: 5px;
   color: #6c6b78;
   cursor: pointer;
 }
@@ -139,18 +137,56 @@ button {
 .navbar {
   z-index: 1999;
   position: fixed;
-  top: 20px;
+  top: 0;
+  padding: 10px;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, 0);
+  width: 100%;
+  border-bottom: 1px solid #d5d5d5;
+  background-color: #fffdf5;
 }
 
 .navbar > a {
   text-decoration: none;
   color: #403e52;
   font-weight: bold;
+  padding: 0 15px;
 }
 
 .navbar > a:hover {
   cursor: pointer;
-  color: #7f7f82;
+  color: #aaaaae;
 }
+
+.navbar > a.active {
+  color: #aaaaae;
+}
+
+.profile {
+  width: 800px;
+  position: absolute;
+  top: 70px;
+}
+
+.chart-wrapper {
+  position: relative;
+}
+
+.not-enough-data {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+}
+
+.chart.no-data {
+  filter: blur(3px);
+}
+
+.legend {
+  color:#303030;
+  padding-bottom: 20px;
+}
+
+

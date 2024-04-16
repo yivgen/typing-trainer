@@ -4,7 +4,7 @@ import Spinner from './Spinner';
 import TypingStats from './TypingStats';
 import useAxiosPrivate from '../hooks/useAxiosPrivate';
 import Signout from './Signout';
-import NavBar from './NavBar';
+import Navbar from './Navbar';
 
 function TypeAQuote() {
     const axiosPrivate = useAxiosPrivate();
@@ -25,7 +25,6 @@ function TypeAQuote() {
                 setAuthor(res.data?.author || '');
             })
             .catch(error => {
-                console.log(error);
                 setQuote('Oops! Something went wrong. Please try again later');
                 setAuthor('Typing Trainer');
             })
@@ -35,6 +34,14 @@ function TypeAQuote() {
 
     const onFinishedQuote = (typingData) => {
         console.log(typingData);
+        axiosPrivate.post('/api/typing-lessons/', {
+            duration: typingData.duration,
+            length: typingData.length,
+            typos: typingData.typos,
+        })
+        .catch(error => {
+            console.log(error);
+        })
         setTypingData(typingData);
         setIsQuoteFinished(true);
     }
@@ -46,7 +53,7 @@ function TypeAQuote() {
 
     return (
         <div className="type-a-quote">
-            <NavBar />
+            <Navbar />
             <Signout />
             {isLoading
                 ? <Spinner />
